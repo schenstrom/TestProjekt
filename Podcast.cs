@@ -1,36 +1,69 @@
-﻿using System;
+﻿using podden.BL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projekt_Podcast
+
+namespace podden.BL
+
 {
-    public class Podcast
+
+    public class Podcast : IPodcastName
     {
-        public string URL { get; set; }
+        private string podcastName { get; set; }
+        private string podcastCategory { get; set; }
+        private int podcastUpdateFrequency { get; set; }
+        private int episodeCount { get; set; }
+        private string url { get; set; }
 
-        public string Uppdaterinsgfrekvens { get; set; }
+        //Wrappar fälten i en public så att den kan nås
+        public string PodcastName
+        {
+            get => podcastName;
+            set => podcastName = value;
+        }
 
-        public string Kategori { get; set; }
+        public string PodcastCategory
+        {
+            get => podcastCategory;
+            set => podcastCategory = value;
+        }
 
-        public int AntalAvsnitt { get; set; }
+        public int PodcastUpdateFrequency
+        {
+            get => podcastUpdateFrequency;
+            set => podcastUpdateFrequency = value;
+        }
 
-        public string Namn { get; set; }
-    }
+        public int EpisodeCount
+        {
+            get => episodeCount;
+            set => episodeCount = value;
+        }
 
-    public Podcast(string _URL, string _kategori, int _uppdateringsFrekvens, int _antalAvsnitt, string _namn)
-    {
-        URL = _URL;
-        Kategori = _kategori;
-        Uppdateringsfrekvens = _uppdateringsFrekvens;
-        AntalAvsnitt = _antalAvsnitt;
-        Namn = _namn;
-    }
+        public string Url
+        {
+            get => url;
+            set => url = value;
+        }
+        //Wrappar fälten i en public så att den kan refereras utanför klasses
 
-    public Podcast() 
-    { 
+        public Podcast(string podcastName, string podcastCategory, int podcastUpdateFrequency, int episodeCount, string url)
+        {
+            this.podcastName = podcastName;
+            this.podcastCategory = podcastCategory;
+            this.podcastUpdateFrequency = podcastUpdateFrequency;
+            this.episodeCount = episodeCount;
+            this.url = url;
+        }
+
+        public Podcast()
+        {
+
+        }
+        
 
     }
 }
